@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'myCocoaPodLibrary'
-  s.version          = '0.1.0'
+  s.version          = '0.0.2'
   s.summary          = 'InMobi Ad SDK'
 
 # This description is used to generate tags and improve search results.
@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
 
   s.description      = 'This library will allow user to integrate inMobi ad in their Native iOS code'
 
-  s.homepage         = 'https://github.com/66667656/myCocoaPodLibrary'
+  s.homepage         = 'https://github.com/HarshJoshi96/Ad-SDK'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '66667656' => 'abhishek.batra@infobeans.com' }
-  s.source           = { :git => 'https://github.com/66667656/myCocoaPodLibrary.git', :tag => s.version.to_s }
+  s.author           = { '66667656' => 'harsh.joshi@infobeans.com' }
+  s.source           = { :git => 'https://github.com/HarshJoshi96/Ad-SDK', :tag => s.version.to_s }
   s.swift_version     = '5.0'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

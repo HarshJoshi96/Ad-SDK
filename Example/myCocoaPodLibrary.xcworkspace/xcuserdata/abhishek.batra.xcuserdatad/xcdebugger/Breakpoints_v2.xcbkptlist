@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "FF9AC3D9-3739-4A3B-A68B-185E09D9970A"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA53C6A1-E169-45D6-BF66-1E4FB8D0DF81"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myCocoaPodLibrary/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49FE4936-326B-4C51-B3B3-4585927C4448"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "init(frame:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "49FE4936-326B-4C51-B3B3-4585927C4448 - 586139f79e23911c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.init(frame: __C.CGRect) -&gt; myCocoaPodLibrary.ProductVideoAdWithProductDetailsView"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "700">
+               </Location>
+               <Location
+                  uuid = "49FE4936-326B-4C51-B3B3-4585927C4448 - 586139f79e23911c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.init(frame: __C.CGRect) -&gt; myCocoaPodLibrary.ProductVideoAdWithProductDetailsView"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "49FE4936-326B-4C51-B3B3-4585927C4448 - 586139f79e2392ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.init(frame: __C.CGRect) -&gt; myCocoaPodLibrary.ProductVideoAdWithProductDetailsView"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8808C50-EC83-4EDA-9A49-4685AD45BA24"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/BrandAdView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "adTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "035239DB-5273-4F2A-BC14-888EF653F4FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/BrandAdView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "adTapHandler()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "442C3CBD-984B-47A8-8A99-B066F499181B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/BrandAdView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "adTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "442C3CBD-984B-47A8-8A99-B066F499181B - 5ae4b80eb3874301"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.BrandAdView.adTapped() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/BrandAdView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "442C3CBD-984B-47A8-8A99-B066F499181B - 5ae4b80eb3874301"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.BrandAdView.adTapped() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/BrandAdView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "143F7622-6C59-4C5A-9052-168F6CA87A88"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "initCode()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "143F7622-6C59-4C5A-9052-168F6CA87A88 - 8e3dae785e220e52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (myCocoaPodLibrary.ProductDetailResponse) -&gt; () in closure #1 (myCocoaPodLibrary.ProductAdResponse) -&gt; () in myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1848">
+               </Location>
+               <Location
+                  uuid = "143F7622-6C59-4C5A-9052-168F6CA87A88 - 396ec12523ec14c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (myCocoaPodLibrary.ProductAdResponse) -&gt; () in myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "3864">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "393EFF5A-8BD8-4BF2-8A1A-5D9EE4411E15"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "initCode()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "393EFF5A-8BD8-4BF2-8A1A-5D9EE4411E15 - 904471691f3f32c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "393EFF5A-8BD8-4BF2-8A1A-5D9EE4411E15 - 396ec12523ec7b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (myCocoaPodLibrary.ProductAdResponse) -&gt; () in myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1472">
+               </Location>
+               <Location
+                  uuid = "393EFF5A-8BD8-4BF2-8A1A-5D9EE4411E15 - 396ec12523ec7b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (myCocoaPodLibrary.ProductAdResponse) -&gt; () in myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "2148">
+               </Location>
+               <Location
+                  uuid = "393EFF5A-8BD8-4BF2-8A1A-5D9EE4411E15 - 396ec12523ec7b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (myCocoaPodLibrary.ProductAdResponse) -&gt; () in myCocoaPodLibrary.ProductVideoAdWithProductDetailsView.initCode() -&gt; ()"
+                  moduleName = "myCocoaPodLibrary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek.batra/Documents/Projects/InmobiRelated/SDK/InMobi_cocoaPod/myCocoaPodLibrary/myCocoaPodLibrary/Classes/ProductVideoAdWithProductDetailsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "3068">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

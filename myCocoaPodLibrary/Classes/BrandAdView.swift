@@ -18,6 +18,8 @@ public class BrandAdView: UIView {
     private var adViewHeight: CGFloat = 0
     private var brandResponse: BrandAdResponse?
     private var touchHandlerButton = UIButton()
+    var observer: NSKeyValueObservation?
+
     
     /// Ads video url: Property
     var adsVideoUrl: String?{
@@ -45,6 +47,7 @@ public class BrandAdView: UIView {
     }
     
     func initCode() {
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         NotificationCenter.default.addObserver(self,
                selector: #selector(playerItemDidReadyToPlay(notification:)),
                name: .AVPlayerItemNewAccessLogEntry,
@@ -64,7 +67,7 @@ public class BrandAdView: UIView {
     @objc func playerItemDidReadyToPlay(notification: Notification) {
             if let _ = notification.object as? AVPlayerItem {
                 // player is ready to play now!!
-                loaded(true, adViewHeight)
+//                loaded(true, adViewHeight)
             }
     }
     
@@ -83,13 +86,13 @@ public class BrandAdView: UIView {
             if let widthRatio = NumberFormatter().number(from: aspectRatio?[0] ?? "0"), let heightRatio = NumberFormatter().number(from: aspectRatio?[1] ?? "0") {
                 let wRatio = CGFloat(truncating: widthRatio)
                 let hRatio = CGFloat(truncating: heightRatio)
-                self.adViewHeight = UIScreen.main.bounds.width * hRatio / wRatio
+                self.adViewHeight = self.frame.width * hRatio / wRatio
                 
             } else{
-                self.adViewHeight = UIScreen.main.bounds.width * 9 / 16
+                self.adViewHeight = 0
             }
         } else {
-            self.adViewHeight = UIScreen.main.bounds.width * 9 / 16
+            self.adViewHeight =  0
         }
     }
     
@@ -114,7 +117,7 @@ public class BrandAdView: UIView {
                 let lblAd = Utils.getAdLabel()
                 self.addSubview(lblAd)
                 self.bringSubviewToFront(lblAd)
-                self.adTapHandler()
+                self.addTapHandler()
                 self.self.playerViewController.view.frame = self.bounds
                 self.playerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 getVideoViewHeight()
@@ -122,6 +125,17 @@ public class BrandAdView: UIView {
             }
             
             self.player.play()
+            // Register as an observer of the player item's status property
+            self.observer = playerItem.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
+                if playerItem.status == .readyToPlay {
+                    print("Ready to play ====++++")
+//                    if !self.videoLoaded {
+//                        self.videoLoaded = true
+                    self.getVideoViewHeight()
+                        self.loaded(true, self.adViewHeight)
+//                    }
+                }
+            })
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(self.playerItemDidReachEnd(notification:)),
@@ -131,7 +145,7 @@ public class BrandAdView: UIView {
         
     }
     
-    func adTapHandler() {
+    func addTapHandler() {
         touchHandlerButton = UIButton(type: .custom)
         touchHandlerButton.frame = self.bounds
         touchHandlerButton.addTarget(self, action: #selector(adTapped), for: .touchUpInside)
@@ -142,6 +156,7 @@ public class BrandAdView: UIView {
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
+        
         p.seek(to: CMTime.zero) { (isFinished:Bool) -> Void in
 //            self.pausedTime = 0.0
             self.player.play()

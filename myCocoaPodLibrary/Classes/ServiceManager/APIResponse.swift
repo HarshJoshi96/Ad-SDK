@@ -343,7 +343,7 @@ struct ProductAd: Codable {
     let brandLogoAccessURL: String
     let adGroupID, adFormat: String
     let ctaLandingURL: String
-    let skus: [ProductSkus]
+    let skus: [ProductSkus]?
 
     enum CodingKeys: String, CodingKey {
         case adID = "ad_id"

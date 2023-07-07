@@ -18,8 +18,11 @@ public class ProductVideoAdWithProductDetailsView: UIView {
 //    @IBOutlet var productImageView: UIImageView!
     @IBOutlet var lblProductTitle: UILabel!
     @IBOutlet var lblProductPrice: UILabel!
+    var observer: NSKeyValueObservation?
+    var adViewHeight: CGFloat = 0
     
     private let player = AVPlayer()
+    private var playerItem: AVPlayerItem?
     private let playerViewController = AVPlayerViewController()
     private var mediadetails:ProductMediaDetail?
 
@@ -37,7 +40,8 @@ public class ProductVideoAdWithProductDetailsView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        getVideoHeight()
+        self.layoutIfNeeded()
+        getVideoHeight()
     }
     
     
@@ -88,6 +92,8 @@ extension ProductVideoAdWithProductDetailsView {
         return nib.instantiate(withOwner: nil)[0] as! T
     }
         func initCode() {
+            self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
         NotificationCenter.default.addObserver(self,
                selector: #selector(playerItemDidReadyToPlay(notification:)),
                name: .AVPlayerItemNewAccessLogEntry,
@@ -102,7 +108,9 @@ extension ProductVideoAdWithProductDetailsView {
 //                                self.productImageView.image = UIImage(data: try! Data(contentsOf: URL(string: productDetailResp.products[0].imageUrls[0])!))
                                 self.lblProductTitle.text = productDetailResp.products[0].title
                                 self.lblProductPrice.text = productDetailResp.products[0].price.currency + " " + "\(productDetailResp.products[0].price.amount)"
-                                self.loaded(true, self.getVideoHeight())
+                                if let playerAdItem = self.playerItem, playerAdItem.status == .readyToPlay {
+                                    self.loaded(true, self.adViewHeight)
+                                }
                             }
                         }
                     }
@@ -115,27 +123,29 @@ extension ProductVideoAdWithProductDetailsView {
     @objc func playerItemDidReadyToPlay(notification: Notification) {
             if let _ = notification.object as? AVPlayerItem {
                 // player is ready to play now!!
-                if !videoLoaded {
-                    videoLoaded = true
-                    loaded(true, getVideoHeight())
-                }
+//                if !videoLoaded {
+//                    videoLoaded = true
+//                    loaded(true, getVideoHeight())
+//                }
             }
     }
     
-    func getVideoHeight() -> CGFloat {
-        let aspectRatio = mediadetails?.aspectRatio.components(separatedBy: ":")
-        if aspectRatio?.count ?? 0 == 2 {
-            
-            if let widthRatio = NumberFormatter().number(from: aspectRatio?[0] ?? "0"), let heightRatio = NumberFormatter().number(from: aspectRatio?[1] ?? "0") {
-                let wRatio = CGFloat(truncating: widthRatio)
-                let hRatio = CGFloat(truncating: heightRatio)
-                return productVideoView.frame.size.width * hRatio / wRatio
+    func getVideoHeight() {
+        DispatchQueue.main.async {
+            let aspectRatio = self.mediadetails?.aspectRatio.components(separatedBy: ":")
+            if aspectRatio?.count ?? 0 == 2 {
                 
-            } else{
-                return productVideoView.frame.size.width * 9 / 16
+                if let widthRatio = NumberFormatter().number(from: aspectRatio?[0] ?? "0"), let heightRatio = NumberFormatter().number(from: aspectRatio?[1] ?? "0") {
+                    let wRatio = CGFloat(truncating: widthRatio)
+                    let hRatio = CGFloat(truncating: heightRatio)
+                    self.adViewHeight = self.productVideoView.frame.size.width * hRatio / wRatio
+                    
+                } else{
+                    self.adViewHeight = 0
+                }
+            } else {
+                self.adViewHeight = 0
             }
-        } else {
-            return productVideoView.frame.size.width * 9 / 16
         }
     }
     
@@ -148,7 +158,7 @@ extension ProductVideoAdWithProductDetailsView {
                 return
             }
             print("Video url is okay", videoURL)
-            let playerItem = AVPlayerItem(url: videoURL)
+            playerItem = AVPlayerItem(url: videoURL)
             print("playerItem", playerItem)
             player.replaceCurrentItem(with: playerItem)
             player.isMuted = true
@@ -164,6 +174,18 @@ extension ProductVideoAdWithProductDetailsView {
                 self.playerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             }
             self.player.play()
+
+   
+                // Register as an observer of the player item's status property
+            self.observer = self.playerItem!.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
+                if let playerAdItem = self.playerItem, playerAdItem.status == .readyToPlay {
+                        print("Ready to play ====++++")
+                        if !self.videoLoaded && self.adViewHeight > 0 {
+                            self.videoLoaded = true
+                            self.loaded(true, self.adViewHeight)
+                        }
+                    }
+                })
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(self.playerItemDidReachEnd(notification:)),

@@ -175,6 +175,7 @@
 		E1486CB12A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1486CAF2A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib */; };
 		E193E11698327B255FB2ADA848D88A79 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA12ED3F7CA1D57D3F08915ABB5E8A71 /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2EE2E7797C383576ACBFE4986179459 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CB8BBAE305AE7F22B66DF7DC9C9FBF5F /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4F3E29A2A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3E2992A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift */; };
 		E5ACC239A1C2E515D4939ACECD147445 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C8E623BE51058C24F14A44E98D7B8A /* ThrowAssertion.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		E62F456D7E3734397A48C79381A9009A /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = A9D8EEE467EAD56565A40CDFD1CCA88F /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6E71178009EC496792C824BEE308527 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16732E88F0DAE37F45DF461816403B41 /* Configuration.swift */; };
@@ -475,6 +476,7 @@
 		E1486CAF2A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopVideoWithBottomProductDetails.xib; path = myCocoaPodLibrary/Classes/TopVideoWithBottomProductDetails.xib; sourceTree = "<group>"; };
 		E165D998FFD3F76C8A67B5A5B89E6E3B /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		E4791BB48C257FC3BF0516240958A4DF /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Nimble.modulemap; sourceTree = "<group>"; };
+		E4F3E2992A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductVideoDetailsHorizontalAd.swift; path = myCocoaPodLibrary/Classes/ProductVideoDetailsHorizontalAd.swift; sourceTree = "<group>"; };
 		E5EA1136A0ED4DA89F891CF8F2EA8FAA /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		E658F388F01C72599CA75537950B6095 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E81AAAE3F50D3852236F5AD2F4F27E27 /* Pods-myCocoaPodLibrary_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-myCocoaPodLibrary_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 		AAFE11D48E0DB2D12E833F0B51615FCD /* myCocoaPodLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E4F3E2992A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift */,
 				E1486C972A4AC7A0004A0379 /* Utils */,
 				E1486CA52A4AFC08004A0379 /* ServiceManager */,
 				A075102B2C361B6C71A47CC712FBD449 /* image.png */,
@@ -1452,6 +1455,7 @@
 				E1486C902A4AC0DD004A0379 /* ProductVideoAdWithProductDetailsView.swift in Sources */,
 				E1486CAB2A4AFD29004A0379 /* ServiceManager.swift in Sources */,
 				E1486CAA2A4AFD29004A0379 /* APIResponse.swift in Sources */,
+				E4F3E29A2A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

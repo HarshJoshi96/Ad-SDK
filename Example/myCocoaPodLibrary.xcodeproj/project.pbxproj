@@ -46,7 +46,7 @@
 		B0CCFC46F39DB8F25BB23531 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C445AA95C44EEF738D9F3774 /* Pods-myCocoaPodLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myCocoaPodLibrary_Example.release.xcconfig"; path = "Target Support Files/Pods-myCocoaPodLibrary_Example/Pods-myCocoaPodLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
 		CC3E8F5F0450DF850DB45E1C /* Pods-myCocoaPodLibrary_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myCocoaPodLibrary_Example.debug.xcconfig"; path = "Target Support Files/Pods-myCocoaPodLibrary_Example/Pods-myCocoaPodLibrary_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F9F8E1FF715E2AB2B5ABA9EF /* myCocoaPodLibrary.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = myCocoaPodLibrary.podspec; path = ../myCocoaPodLibrary.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F9F8E1FF715E2AB2B5ABA9EF /* inmobiadSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = inmobiadSDK.podspec; path = ../inmobiadSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				F9F8E1FF715E2AB2B5ABA9EF /* myCocoaPodLibrary.podspec */,
+				F9F8E1FF715E2AB2B5ABA9EF /* inmobiadSDK.podspec */,
 				B0CCFC46F39DB8F25BB23531 /* README.md */,
 				7E8CFB3E831537A930DDB03E /* LICENSE */,
 			);

@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'myCocoaPodLibrary'
-  s.version          = '0.0.2'
+  s.name             = 'inmobiadSDK'
+  s.version          = '0.0.3'
   s.summary          = 'InMobi Ad SDK'
 
 # This description is used to generate tags and improve search results.

@@ -26,7 +26,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgg-Ae-ifo">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="355"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPl-nV-iTE" customClass="BrandAdView" customModule="myCocoaPodLibrary">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPl-nV-iTE">
                                                 <rect key="frame" x="0.0" y="15" width="375" height="120"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>

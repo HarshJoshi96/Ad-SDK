@@ -21,8 +21,12 @@ public class TopVideoWithBottomProductDetails: UIView {
     @IBOutlet var productDetailsHeightConstraint: NSLayoutConstraint!
     
     private let player = AVPlayer()
+    var playerItem: AVPlayerItem?
+    
     private let playerViewController = AVPlayerViewController()
     private var mediadetails:ProductMediaDetail?
+    var observer: NSKeyValueObservation?
+
     
     open var loaded: ((Bool, CGFloat)->())!
     open var advertisementTapped: ((String)->())?
@@ -75,6 +79,7 @@ extension TopVideoWithBottomProductDetails {
     }
     
     func initCode() {
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(playerItemDidReadyToPlay(notification:)),
                                                name: .AVPlayerItemNewAccessLogEntry,
@@ -87,12 +92,14 @@ extension TopVideoWithBottomProductDetails {
                     self.mediadetails = mediadetails
                     ServiceManager.shared.getProductDetails(clientId: "70891516", productSku: "6107B330168080") { productDetailResp in
                         DispatchQueue.main.async {
-                            self.productImageView.image = UIImage(data: try! Data(contentsOf: URL(string: productDetailResp.products[0].imageUrls[0])!))
+                            self.setImageFromStringrURL(stringUrl: productDetailResp.products[0].imageUrls[0], onImageView: self.productImageView)
                             self.lblProductTitle.text = productDetailResp.products[0].title
                             self.lblProductPrice.text = productDetailResp.products[0].price.currency + " " + "\(productDetailResp.products[0].price.amount)"
                             self.productDetailsHeightConstraint.constant = 120
                             self.videoViewHeightConstraint.constant = self.getVideoViewHeight()
-                            self.loaded(true, self.videoViewHeightConstraint.constant + self.productDetailsHeightConstraint.constant)
+                            if let playerAdItem = self.playerItem, playerAdItem.status == .readyToPlay {
+                                self.loaded(true, self.videoViewHeightConstraint.constant + self.productDetailsHeightConstraint.constant)
+                            }
                         }
                     }
                 }
@@ -102,12 +109,25 @@ extension TopVideoWithBottomProductDetails {
         }
     }
     
+    func setImageFromStringrURL(stringUrl: String, onImageView: UIImageView) {
+        if let url = URL(string: stringUrl) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+          // Error handling...
+          guard let imageData = data else { return }
+
+          DispatchQueue.main.async {
+              onImageView.image = UIImage(data: imageData)
+          }
+        }.resume()
+      }
+    }
+    
     @objc func playerItemDidReadyToPlay(notification: Notification) {
-        if let _ = notification.object as? AVPlayerItem {
-            // player is ready to play now!!
-            self.videoViewHeightConstraint.constant = self.getVideoViewHeight()
-            loaded(true, videoViewHeightConstraint.constant + productDetailsHeightConstraint.constant)
-        }
+//        if let _ = notification.object as? AVPlayerItem {
+//            // player is ready to play now!!
+//            self.videoViewHeightConstraint.constant = self.getVideoViewHeight()
+//            loaded(true, videoViewHeightConstraint.constant + productDetailsHeightConstraint.constant)
+//        }
     }
     
     //MARK: This will load video ads url
@@ -119,7 +139,7 @@ extension TopVideoWithBottomProductDetails {
                 return
             }
             print("Video url is okay", videoURL)
-            let playerItem = AVPlayerItem(url: videoURL)
+            self.playerItem = AVPlayerItem(url: videoURL)
             print("playerItem", playerItem)
             player.replaceCurrentItem(with: playerItem)
             player.isMuted = true
@@ -137,6 +157,14 @@ extension TopVideoWithBottomProductDetails {
                 self.videoViewHeightConstraint.constant = getVideoViewHeight()
             }
             self.player.play()
+            
+            self.observer = playerItem!.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
+                if playerItem.status == .readyToPlay {
+                    print("Ready to play ====++++")
+                    self.videoViewHeightConstraint.constant = self.getVideoViewHeight()
+                    self.loaded(true, self.videoViewHeightConstraint.constant + self.productDetailsHeightConstraint.constant)
+                }
+            })
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(self.playerItemDidReachEnd(notification:)),

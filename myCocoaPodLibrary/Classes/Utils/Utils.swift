@@ -21,3 +21,8 @@ class Utils {
         
     }
 }
+enum AdTypes: String {
+    case brandAd = "brandAd"
+    case horizontalTextAd = "horizontalTextAd"
+    case verticalTextAd = "verticalTextAd"
+}

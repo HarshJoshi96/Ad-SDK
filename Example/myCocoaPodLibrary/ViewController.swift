@@ -28,9 +28,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         Logger().printLog()
-        setupAd1View()
-        setupAd2View()
-        setupAd3View()
+        let inMobiAdType = SelectAdOption(frame: self.ads1View.bounds, width: Int(self.view.frame.size.width), typeAd: "brandAd")
+        
+        inMobiAdType.videoLoaded = { adView, isLoaded, viewHeight in
+            self.ads1View.isHidden = !isLoaded
+            DispatchQueue.main.async {
+                if isLoaded && self.ads1View.frame.size.height != viewHeight {
+                    self.view.addSubview(adView)
+                } else {
+                    if !isLoaded {
+                        self.ads1View.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                    }
+                }
+            }
+        }
+        inMobiAdType.itemAdvertisementTapped = { brandId in
+            print("Video tapped for barndID", brandId)
+        }
+//        self.view.addSubview(mv)
+//        setupAd1View()
+//        setupAd2View()
+//        setupAd3View()
 //        setupAd4View()
     }
     

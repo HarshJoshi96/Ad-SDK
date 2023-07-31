@@ -11,7 +11,7 @@ import AVKit
 
 public class ProductVideoDetailsHorizontalAd: UIView {
     
-    private let player = AVPlayer()
+    private var player = AVPlayer()
     private let playerViewController = AVPlayerViewController()
     private var playerItem: AVPlayerItem?
     private var pausedTime: Double = 0.0
@@ -23,7 +23,7 @@ public class ProductVideoDetailsHorizontalAd: UIView {
     }
     private var productAdResponse: ProductAdResponse?
     private var touchHandlerButton = UIButton()
-    var observer: NSKeyValueObservation?
+    
     private var videoLoaded:Bool = false
     private var productVideoView = UIView()
     private var productDetailView = UIView()
@@ -31,8 +31,6 @@ public class ProductVideoDetailsHorizontalAd: UIView {
     private var lblProductPrice = UILabel()
     let productVideoWidthRatio: CGFloat = 0.40
     let productDetailWidthRatio: CGFloat = 1 - 0.40
-
-
     
     /// Ads video url: Property
     var productAdVideoUrl: String?{
@@ -41,10 +39,12 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         }
     }
     
+    var observer: NSKeyValueObservation?
+    
     open var loaded: ((Bool, CGFloat)->())!
     open var advertisementTapped: ((String)->())?
     
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         initCode()
     }
@@ -63,9 +63,27 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         renderUIForView()
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         NotificationCenter.default.addObserver(self,
-               selector: #selector(playerItemDidReadyToPlay(notification:)),
-               name: .AVPlayerItemNewAccessLogEntry,
+                                               selector: #selector(playerItemDidReadyToPlay(notification:)),
+                                               name: .AVPlayerItemNewAccessLogEntry,
                                                object: player.currentItem)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setPlayerLayerToNil), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        
+        // foreground event
+        NotificationCenter.default.addObserver(self, selector: #selector(reinitializePlayerLayer), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        // add these 2 notifications to prevent freeze on long Home button press and back
+        NotificationCenter.default.addObserver(self, selector: #selector(setPlayerLayerToNil), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reinitializePlayerLayer), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReadyToPlay(notification:)),
+                                               name: .AVPlayerItemNewAccessLogEntry,
+                                               object: player.currentItem)
+        
+        
+        
         ServiceManager.shared.getProductAd { productAdResp in
             self.productAdResponse = productAdResp
             if productAdResp.data.adsData?.count ?? 0>0 && productAdResp.data.adsData?[0].ads?.count ?? 0>0 && productAdResp.data.adsData?[0].ads?[0].mediaDetails?.count ?? 0>0 {
@@ -74,7 +92,7 @@ public class ProductVideoDetailsHorizontalAd: UIView {
                     self.mediadetails = mediadetails
                     ServiceManager.shared.getProductDetails(clientId: "70891516", productSku: "6107B330168080") { productDetailResp in
                         DispatchQueue.main.async {
-//                                self.productImageView.image = UIImage(data: try! Data(contentsOf: URL(string: productDetailResp.products[0].imageUrls[0])!))
+                            //                                self.productImageView.image = UIImage(data: try! Data(contentsOf: URL(string: productDetailResp.products[0].imageUrls[0])!))
                             self.lblProductTitle.text = productDetailResp.products[0].title
                             self.lblProductPrice.text = productDetailResp.products[0].price.currency + " " + "\(productDetailResp.products[0].price.amount)"
                             if let playerAdItem = self.playerItem, playerAdItem.status == .readyToPlay {
@@ -89,13 +107,34 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         }
     }
     
-
-
-    @objc func playerItemDidReadyToPlay(notification: Notification) {
-            if let _ = notification.object as? AVPlayerItem {
-                // player is ready to play now!!
-//                loaded(true, adViewHeight)
+    @objc fileprivate func setPlayerLayerToNil(){
+        // first pause the player before setting the playerLayer to nil. The pause works similar to a stop button
+        player.pause()
+    }
+    
+    // foreground event
+    @objc fileprivate func reinitializePlayerLayer(){
+        
+        //      if player != nil{
+        if #available(iOS 10.0, *) {
+            if player.timeControlStatus == .paused{
+                player.play()
             }
+        } else {
+            // if app is running on iOS 9 or lower
+            if player.isPlaying == false{
+                player.play()
+            }
+        }
+        //        }
+    }
+    
+    
+    @objc func playerItemDidReadyToPlay(notification: Notification) {
+        if let _ = notification.object as? AVPlayerItem {
+            // player is ready to play now!!
+            //                loaded(true, adViewHeight)
+        }
     }
     
     
@@ -112,7 +151,7 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         let videoViewWidth = self.frame.width * productVideoWidthRatio
         self.productVideoView.frame = CGRect(x: 0, y: 0, width: videoViewWidth, height: self.adViewHeight)
         self.productDetailView.frame = CGRect(x: productVideoView.frame.maxX, y: 0, width: productDetailView.frame.width, height: adViewHeight)
-
+        
     }
     
     func getVideoHeightAndUpdateVideoFrame() {
@@ -157,18 +196,18 @@ public class ProductVideoDetailsHorizontalAd: UIView {
                 self.playerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             }
             self.player.play()
-
-   
-                // Register as an observer of the player item's status property
+            
+            
+            // Register as an observer of the player item's status property
             self.observer = self.playerItem!.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
                 if let playerAdItem = self.playerItem, playerAdItem.status == .readyToPlay {
-                        print("Ready to play ====++++")
-                        if !self.videoLoaded && self.adViewHeight > 0 {
-                            self.videoLoaded = true
-                            self.loaded(true, self.adViewHeight)
-                        }
+                    print("Ready to play ====++++")
+                    if !self.videoLoaded && self.adViewHeight > 0 {
+                        self.videoLoaded = true
+                        self.loaded(true, self.adViewHeight)
                     }
-                })
+                }
+            })
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(self.playerItemDidReachEnd(notification:)),
@@ -194,7 +233,7 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         lblProductTitle.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         lblProductTitle.numberOfLines = 2
         productDetailView.addSubview(lblProductTitle)
-
+        
         lblProductPrice.frame = CGRect(x: lblH_Padding, y: lblProductTitle.frame.maxY + lblV_Padding, width: productDetailView.frame.width - (lblH_Padding*2), height: 20)
         lblProductPrice.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         lblProductPrice.numberOfLines = 1
@@ -207,15 +246,15 @@ public class ProductVideoDetailsHorizontalAd: UIView {
         
     }
     
-
+    
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
         
         p.seek(to: CMTime.zero) { (isFinished:Bool) -> Void in
-//            self.pausedTime = 0.0
+            //            self.pausedTime = 0.0
             self.player.play()
         }
     }
-
+    
 }

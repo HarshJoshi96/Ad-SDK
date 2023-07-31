@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 import AVKit
 
-public class BrandAdView: UIView {
+
+public class BrandAdView: UIView, UIWebViewDelegate {
     
-    private let player = AVPlayer()
+    private var player = AVPlayer()
     private let playerViewController = AVPlayerViewController()
     private var pausedTime: Double = 0.0
     private var mediadetails:MediaDetail?
@@ -48,10 +49,7 @@ public class BrandAdView: UIView {
     
     func initCode() {
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        NotificationCenter.default.addObserver(self,
-               selector: #selector(playerItemDidReadyToPlay(notification:)),
-               name: .AVPlayerItemNewAccessLogEntry,
-                                               object: player.currentItem)
+        
         ServiceManager.shared.getBrandAd { brandAd in
             self.brandResponse = brandAd
             if brandAd.data.ads.count>0 && brandAd.data.ads[0].mediaDetails.count>0 {
@@ -62,14 +60,7 @@ public class BrandAdView: UIView {
         }
     }
     
-
-
-    @objc func playerItemDidReadyToPlay(notification: Notification) {
-            if let _ = notification.object as? AVPlayerItem {
-                // player is ready to play now!!
-//                loaded(true, adViewHeight)
-            }
-    }
+   
     
     
     @objc func adTapped() {
@@ -118,7 +109,7 @@ public class BrandAdView: UIView {
                 self.addSubview(lblAd)
                 self.bringSubviewToFront(lblAd)
                 self.addTapHandler()
-                self.self.playerViewController.view.frame = self.bounds
+                self.playerViewController.view.frame = self.bounds
                 self.playerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 getVideoViewHeight()
                 
@@ -141,6 +132,21 @@ public class BrandAdView: UIView {
                                                    selector: #selector(self.playerItemDidReachEnd(notification:)),
                                                    name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                    object: self.player.currentItem)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(setPlayerLayerToNil), name: UIApplication.didEnterBackgroundNotification, object: nil)
+
+                // foreground event
+                NotificationCenter.default.addObserver(self, selector: #selector(reinitializePlayerLayer), name: UIApplication.willEnterForegroundNotification, object: nil)
+
+               // add these 2 notifications to prevent freeze on long Home button press and back
+                NotificationCenter.default.addObserver(self, selector: #selector(setPlayerLayerToNil), name: UIApplication.willResignActiveNotification, object: nil)
+
+                NotificationCenter.default.addObserver(self, selector: #selector(reinitializePlayerLayer), name: UIApplication.didBecomeActiveNotification, object: nil)
+
+            NotificationCenter.default.addObserver(self,
+                   selector: #selector(playerItemDidReadyToPlay(notification:)),
+                   name: .AVPlayerItemNewAccessLogEntry,
+                                                   object: player.currentItem)
         }
         
     }
@@ -161,6 +167,35 @@ public class BrandAdView: UIView {
 //            self.pausedTime = 0.0
             self.player.play()
         }
+    }
+    @objc fileprivate func setPlayerLayerToNil(){
+        // first pause the player before setting the playerLayer to nil. The pause works similar to a stop button
+        player.pause()
+    }
+
+     // foreground event
+    @objc fileprivate func reinitializePlayerLayer(){
+
+//      if player != nil{
+            if #available(iOS 10.0, *) {
+                if player.timeControlStatus == .paused{
+                    player.play()
+                }
+            } else {
+                // if app is running on iOS 9 or lower
+                if player.isPlaying == false{
+                    player.play()
+                }
+            }
+//        }
+    }
+
+
+    @objc func playerItemDidReadyToPlay(notification: Notification) {
+            if let _ = notification.object as? AVPlayerItem {
+                // player is ready to play now!!
+//                loaded(true, adViewHeight)
+            }
     }
     
 

@@ -171,6 +171,8 @@
 		E1486CB12A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1486CAF2A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib */; };
 		E193E11698327B255FB2ADA848D88A79 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA12ED3F7CA1D57D3F08915ABB5E8A71 /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2EE2E7797C383576ACBFE4986179459 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CB8BBAE305AE7F22B66DF7DC9C9FBF5F /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E418CE2A2A73D52000ACFC7B /* HtmlVieweAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418CE282A73D52000ACFC7B /* HtmlVieweAd.swift */; };
+		E48D5B8E2A5E7868003A1816 /* MyAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D5B8D2A5E7868003A1816 /* MyAdView.swift */; };
 		E4F3E29A2A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3E2992A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift */; };
 		E4F3E29C2A57E7A600F3EB33 /* SelectAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3E29B2A57E7A600F3EB33 /* SelectAdView.swift */; };
 		E4F3E2A52A58196000F3EB33 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3E2A02A58196000F3EB33 /* ServiceManager.swift */; };
@@ -472,7 +474,9 @@
 		E1486CAE2A4AFD55004A0379 /* TopVideoWithBottomProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopVideoWithBottomProductDetails.swift; path = myCocoaPodLibrary/Classes/TopVideoWithBottomProductDetails.swift; sourceTree = "<group>"; };
 		E1486CAF2A4AFD55004A0379 /* TopVideoWithBottomProductDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopVideoWithBottomProductDetails.xib; path = myCocoaPodLibrary/Classes/TopVideoWithBottomProductDetails.xib; sourceTree = "<group>"; };
 		E165D998FFD3F76C8A67B5A5B89E6E3B /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
+		E418CE282A73D52000ACFC7B /* HtmlVieweAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HtmlVieweAd.swift; path = myCocoaPodLibrary/Classes/HtmlVieweAd.swift; sourceTree = "<group>"; };
 		E4791BB48C257FC3BF0516240958A4DF /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Nimble.modulemap; sourceTree = "<group>"; };
+		E48D5B8D2A5E7868003A1816 /* MyAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdView.swift; sourceTree = "<group>"; };
 		E4F3E2992A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductVideoDetailsHorizontalAd.swift; path = myCocoaPodLibrary/Classes/ProductVideoDetailsHorizontalAd.swift; sourceTree = "<group>"; };
 		E4F3E29B2A57E7A600F3EB33 /* SelectAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAdView.swift; path = myCocoaPodLibrary/Classes/SelectAdView.swift; sourceTree = "<group>"; };
 		E4F3E2A02A58196000F3EB33 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
@@ -844,6 +848,7 @@
 		AAFE11D48E0DB2D12E833F0B51615FCD /* myCocoaPodLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E418CE282A73D52000ACFC7B /* HtmlVieweAd.swift */,
 				E4F3E29F2A58196000F3EB33 /* ServiceManager */,
 				E4F3E2A32A58196000F3EB33 /* Utils */,
 				E4F3E29B2A57E7A600F3EB33 /* SelectAdView.swift */,
@@ -857,6 +862,7 @@
 				E1486C7E2A49A7FB004A0379 /* BrandAdView.swift */,
 				1E4DD137EFC33BAE5C4561419F85BB90 /* Pod */,
 				47FAB307609833587C19958AF96FF2C9 /* Support Files */,
+				E48D5B8D2A5E7868003A1816 /* MyAdView.swift */,
 			);
 			name = myCocoaPodLibrary;
 			path = ../..;
@@ -1454,12 +1460,14 @@
 				D476A3860449F358FD881955C53CECFC /* Logger.swift in Sources */,
 				E1486C802A49A7FB004A0379 /* BrandAdView.swift in Sources */,
 				EC7107655A65276EEE04ED2B5B9F6233 /* myCocoaPodLibrary-dummy.m in Sources */,
+				E48D5B8E2A5E7868003A1816 /* MyAdView.swift in Sources */,
 				E4F3E2A52A58196000F3EB33 /* ServiceManager.swift in Sources */,
 				E4F3E29C2A57E7A600F3EB33 /* SelectAdView.swift in Sources */,
 				E1486CB02A4AFD55004A0379 /* TopVideoWithBottomProductDetails.swift in Sources */,
 				E1486C902A4AC0DD004A0379 /* ProductVideoAdWithProductDetailsView.swift in Sources */,
 				E4F3E2A82A58196000F3EB33 /* Utils.swift in Sources */,
 				E4F3E29A2A57E1A000F3EB33 /* ProductVideoDetailsHorizontalAd.swift in Sources */,
+				E418CE2A2A73D52000ACFC7B /* HtmlVieweAd.swift in Sources */,
 				E4F3E2A72A58196000F3EB33 /* APIRequest.swift in Sources */,
 				E4F3E2A62A58196000F3EB33 /* APIResponse.swift in Sources */,
 			);

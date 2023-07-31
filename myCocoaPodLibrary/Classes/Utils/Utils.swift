@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class Utils {
     static func getAdLabel() -> UILabel {
@@ -25,4 +26,11 @@ enum AdTypes: String {
     case brandAd = "brandAd"
     case horizontalTextAd = "horizontalTextAd"
     case verticalTextAd = "verticalTextAd"
+}
+
+extension AVPlayer{
+
+    var isPlaying: Bool{
+        return rate != 0 && error == nil
+    }
 }
